@@ -1,5 +1,5 @@
 let priceInput = document.getElementById('price-input');
-priceInput.addEventListener('change', calculatePrice);
+priceInput.addEventListener('input', calculatePrice);
 
 function calculatePrice() {
     let price = 0;
@@ -15,13 +15,12 @@ function calculatePrice() {
     let cost2 = (parseFloat(price, 10) + 1);
     costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement3 = document.querySelector('#cost3_1');
+    let costElement3 = document.querySelector('#cost3');
     let cost3 = (parseFloat(price, 10) + 0.5);
-    costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
-
-    let costElement32 = document.querySelector('#cost3_2');
     let cost32 = (parseFloat(price, 10) + 2);
-    costElement32.textContent = cost32.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' }) + 
+    " – " + 
+    cost32.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement4 = document.querySelector('#cost4');
     let cost4 = (parseFloat(price, 10) + 1);
