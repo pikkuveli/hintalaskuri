@@ -1,6 +1,13 @@
 let priceInput = document.getElementById('price-input');
 priceInput.addEventListener('input', calculatePrice);
 
+priceInput.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.activeElement.blur();
+    }
+});
+
 function calculatePrice() {
     let price = 0;
 
