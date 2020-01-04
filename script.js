@@ -64,24 +64,28 @@ function calculateValuePrice() {
 function calculateSeasonPrice() {
     let price = 0;
     let days = 0;
+    let priceFor14Days = 40.40;
+    let priceFor30Days = 59.70;
 
     let seasonDaysInput = document.querySelector('#seasonDaysInput');
     days = seasonDaysInput.value;
 
     if (days == 14) {
         console.log("DEBUG: tasan 14");
-        price = 40.40;
+        price = priceFor14Days;
     } else if (days > 14 && days < 30) {
         console.log("DEBUG: 15-29, " + days);
         let calcDaysMinus14 = days - 14;
         console.log("DEBUG: distance from 14: " + calcDaysMinus14);
-        price = 40.40 + calcDaysMinus14 * 1.21;
+        price = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
     } else if (days == 30) {
         console.log("DEBUG: tasan 30");
+        price = priceFor30Days;
     } else if (days > 30 && days < 367) {
         console.log("DEBUG: 31-366, " + days);
         let calcDaysMinus30 = days - 30;
         console.log("DEBUG: distance from 30: " + calcDaysMinus30);
+        price = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
     } else {
         console.log("DEBUG: tämä luku ei sallittu: " + days);
         
