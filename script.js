@@ -3,6 +3,7 @@ document.getElementById('view2').style.display = "none";
 
 document.getElementById('btn0').addEventListener("click", showView1);
 document.getElementById('btn1').addEventListener("click", showView2);
+document.getElementById('btn2').addEventListener("click", showView0);
 
 let priceInput = document.getElementById('price-input');
 priceInput.addEventListener('input', calculatePrice);
@@ -17,11 +18,19 @@ priceInput.addEventListener("keyup", function (event) {
 function showView1() {
     document.getElementById('view0').style.display = "none";
     document.getElementById('view1').style.display = "block";
+    document.getElementById('view2').style.display = "none";
 }
 
 function showView2() {
     document.getElementById('view0').style.display = "none";
+    document.getElementById('view1').style.display = "none";
     document.getElementById('view2').style.display = "block";
+}
+
+function showView0() {
+    document.getElementById('view0').style.display = "block";
+    document.getElementById('view1').style.display = "none";
+    document.getElementById('view2').style.display = "none";
 }
 
 function calculatePrice() {
@@ -39,11 +48,8 @@ function calculatePrice() {
     costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement3 = document.querySelector('#cost3');
-    let cost3 = (parseFloat(price, 10) + 0.5);
-    let cost32 = (parseFloat(price, 10) + 2);
-    costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' }) +
-        " – " +
-        cost32.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let cost3 = (parseFloat(price, 10) + 1);
+    costElement3.textContent = "~"+ cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement4 = document.querySelector('#cost4');
     let cost4 = (parseFloat(price, 10) + 1);
