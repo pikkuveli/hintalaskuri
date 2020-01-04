@@ -92,18 +92,17 @@ function calculateSeasonPrice() {
     }
 
     let costElement1 = document.querySelector('#seasonCost1');
-    let cost1 = (parseFloat(price, 10));
-    costElement1.textContent = cost1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement1.textContent = price.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    // let costElement2 = document.querySelector('#seasonCost2');
-    // let cost2 = (parseFloat(days, 10) + 1);
-    // costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let costElement2 = document.querySelector('#seasonCost2');
+    let cost2 = price + 1;
+    costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    // let costElement3 = document.querySelector('#seasonCost3');
-    // let cost3 = (parseFloat(days, 10) + 2);
-    // costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let costElement3 = document.querySelector('#seasonCost3');
+    let cost3 = price + 2;
+    costElement3.textContent = "~" + cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    // let costElement4 = document.querySelector('#seasonCost4');
-    // let cost4 = (parseFloat(days, 10) + 3);
-    // costElement4.textContent = cost4.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let costElement4 = document.querySelector('#seasonCost4');
+    let cost4 = price * 1.035;
+    costElement4.textContent = cost4.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
