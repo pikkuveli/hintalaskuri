@@ -14,10 +14,10 @@
 
 <body>
     <div class="jumbotron text-center">
-        <h1><a href="#" id="btn2">HSL-hintalaskuri</a></h1>
+        <h1><a href="#" id="btnView0">HSL-hintalaskuri</a></h1>
         <ul id="view0-list">
-            <li><a href="#" id="btn0">Arvoliput</a></li>
-            <li><a href="#" id="btn1">Kausiliput</a></li>
+            <li><a href="#" id="btnView1">Arvoliput</a></li>
+            <li><a href="#" id="btnView2">Kausiliput</a></li>
         </ul>
     </div>
     <div id="view0" class="container text-center">
@@ -26,7 +26,7 @@
     <div id="view1" class="container">
         <h2>Arvolippulaskuri</h2>
 
-        <p>Syötä matkakortille ladattava arvo: <input id="price-input" type="number" min="0" step="0.01"> €</p>
+        <p>Syötä matkakortille ladattava arvo: <input id="valuePriceInput" type="number" min="0" step="0.01"> €</p>
 
         <h2>Hinta</h2>
 
@@ -40,19 +40,19 @@
             <tbody>
                 <tr>
                     <td>HSL-automaatti ja HSL-palvelupiste</td>
-                    <td><span id="cost1">0</span></td>
+                    <td><span id="valueCost1">0</span></td>
                 </tr>
                 <tr>
                     <td>HOK-Elannon kaupat</td>
-                    <td><span id="cost2">0</span></td>
+                    <td><span id="valueCost2">0</span></td>
                 </tr>
                 <tr>
-                    <td>Keskon kaupat</td>
-                    <td><span id="cost3">0</span></td>
+                    <td>K-ryhmän kaupat</td>
+                    <td><span id="valueCost3">0</span></td>
                 </tr>
                 <tr>
                     <td>R-kioskit</td>
-                    <td><span id="cost4">0</span></td>
+                    <td><span id="valueCost4">0</span></td>
                 </tr>
             </tbody>
         </table>
@@ -62,7 +62,7 @@
     <div id="view2" class="container">
         <h2>Kausilippulaskuri (aikuinen, AB-vyöhyke)</h2>
 
-        <p>Syötä kausilipun kesto: <input id="season-input" type="number" min="14" step="1"> vrk</p>
+        <p>Syötä kausilipun kesto: <input id="seasonDaysInput" type="number" min="14" step="1"> vrk</p>
 
         <h2>Hinta</h2>
         
@@ -76,19 +76,19 @@
             <tbody>
                 <tr>
                     <td>HSL-automaatti ja HSL-palvelupiste</td>
-                    <td><span id="season-cost1">0</span></td>
+                    <td><span id="seasonCost1">0</span></td>
                 </tr>
                 <tr>
                     <td>HOK-Elannon kaupat</td>
-                    <td><span id="season-cost2">0</span></td>
+                    <td><span id="seasonCost2">0</span></td>
                 </tr>
                 <tr>
-                    <td>Keskon kaupat</td>
-                    <td><span id="season-cost3">0</span></td>
+                    <td>K-ryhmän kaupat</td>
+                    <td><span id="seasonCost3">0</span></td>
                 </tr>
                 <tr>
                     <td>R-kioskit</td>
-                    <td><span id="season-cost4">0</span></td>
+                    <td><span id="seasonCost4">0</span></td>
                 </tr>
             </tbody>
         </table>
