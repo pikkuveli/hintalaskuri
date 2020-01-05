@@ -87,105 +87,268 @@ function calculateSeasonPrice() {
 
     let selectedCustomerGroup = "";
 
-    let priceFor14DaysForAdult = 40.40;
-    let priceFor30DaysForAdult = 59.70;
+    // AB:
 
-    let factorForABZoneUnder30DaysForAdult = 1.21;
-    let factorForABZoneOver30DaysForAdult = 1.75;
+    let priceFor14DaysForAdultAB = 40.40;
+    let priceFor30DaysForAdultAB = 59.70;
 
-    let priceFor14DaysForStudent = 22.30;
-    let priceFor30DaysForStudent = 32.80;
+    let factorUnder30DaysForAdultAB = 1.21;
+    let factorOver30DaysForAdultAB = 1.75;
 
-    let factorForABZoneUnder30DaysForStudent = 0.66;
-    let factorForABZoneOver30DaysForStudent = 0.96;
+    let priceFor14DaysForStudentAB = 22.30;
+    let priceFor30DaysForStudentAB = 32.80;
 
-    let priceFor14DaysForDiscountGroup = 20.20;
-    let priceFor30DaysForDiscountGroup = 29.90;
+    let factorUnder30DaysForStudentAB = 0.66;
+    let factorOver30DaysForStudentAB = 0.96;
 
-    let factorForABZoneUnder30DaysForDiscountGroup = 0.61;
-    let factorForABZoneOver30DaysForDiscountGroup = 0.87;
+    let priceFor14DaysForDiscountGroupAB = 20.20;
+    let priceFor30DaysForDiscountGroupAB = 29.90;
 
-    //let discount = 0;
-    //let roundUp = false;
+    let factorUnder30DaysForDiscountGroupAB = 0.61;
+    let factorOver30DaysForDiscountGroupAB = 0.87;
+
+    // let priceFor14DaysForAdultBC = 40.40;
+    // let priceFor30DaysForAdultBC = 59.70;
+
+    // let factorUnder30DaysForAdultBC = 1.21;
+    // let factorOver30DaysForAdultBC = 1.75;
+
+    // let priceFor14DaysForStudentBC = 22.30;
+    // let priceFor30DaysForStudentBC = 32.80;
+
+    // let factorUnder30DaysForStudentBC = 0.66;
+    // let factorOver30DaysForStudentBC = 0.96;
+
+    // let priceFor14DaysForDiscountGroupBC = 20.20;
+    // let priceFor30DaysForDiscountGroupBC = 29.90;
+
+    // let factorUnder30DaysForDiscountGroupBC = 0.61;
+    // let factorOver30DaysForDiscountGroupBC = 0.87;
+
+    // let priceFor14DaysForAdultD = 40.40;
+    // let priceFor30DaysForAdultD = 59.70;
+
+    // let factorUnder30DaysForAdultD = 1.21;
+    // let factorOver30DaysForAdultD = 1.75;
+
+    // let priceFor14DaysForStudentD = 22.30;
+    // let priceFor30DaysForStudentD = 32.80;
+
+    // let factorUnder30DaysForStudentD = 0.66;
+    // let factorOver30DaysForStudentD = 0.96;
+
+    // let priceFor14DaysForDiscountGroupD = 20.20;
+    // let priceFor30DaysForDiscountGroupD = 29.90;
+
+    // let factorUnder30DaysForDiscountGroupD = 0.61;
+    // let factorOver30DaysForDiscountGroupD = 0.87;
+
+    // ABC:
+
+    let priceFor14DaysForAdultABC = 65.70;
+    let priceFor30DaysForAdultABC = 96.70;
+
+    let factorUnder30DaysForAdultABC = 1.94;
+    let factorOver30DaysForAdultABC = 2.83;
+
+    let priceFor14DaysForStudentABC = 36.00;
+    let priceFor30DaysForStudentABC = 53.20;
+
+    let factorUnder30DaysForStudentABC = 1.08;
+    let factorOver30DaysForStudentABC = 1.56;
+
+    let priceFor14DaysForDiscountGroupABC = 33.10;
+    let priceFor30DaysForDiscountGroupABC = 48.40;
+
+    let factorUnder30DaysForDiscountGroupABC = 0.96;
+    let factorOver30DaysForDiscountGroupABC = 1.42;
+
+    // CD:
+
+    let priceFor14DaysForAdultCD = 52.70;
+    let priceFor30DaysForAdultCD = 77.60;
+
+    let factorUnder30DaysForAdultCD = 1.56;
+    let factorOver30DaysForAdultCD = 2.27;
+
+    let priceFor14DaysForStudentCD = 29.00;
+    let priceFor30DaysForStudentCD = 42.70;
+
+    let factorUnder30DaysForStudentCD = 0.86;
+    let factorOver30DaysForStudentCD = 1.25;
+
+    let priceFor14DaysForDiscountGroupCD = 26.40;
+    let priceFor30DaysForDiscountGroupCD = 38.80;
+
+    let factorUnder30DaysForDiscountGroupCD = 0.78;
+    let factorOver30DaysForDiscountGroupCD = 1.13;
+
+    // ABCD:
+
+    let priceFor14DaysForAdultABCD = 94.60;
+    let priceFor30DaysForAdultABCD = 139.70;
+
+    let factorUnder30DaysForAdultABCD = 2.82;
+    let factorOver30DaysForAdultABCD = 4.09;
+
+    let priceFor14DaysForStudentABCD = 52.00;
+    let priceFor30DaysForStudentABCD = 76.80;
+
+    let factorUnder30DaysForStudentABCD = 1.55;
+    let factorOver30DaysForStudentABCD = 2.25;
+
+    let priceFor14DaysForDiscountGroupABCD = 47.40;
+    let priceFor30DaysForDiscountGroupABCD = 69.90;
+
+    let factorUnder30DaysForDiscountGroupABCD = 1.41;
+    let factorOver30DaysForDiscountGroupABCD = 2.04;
+
+    // Yleiset:
+
+    let priceFor14DaysForAdult = 0;
+    let priceFor30DaysForAdult = 0;
+
+    let factorUnder30DaysForAdult = 0;
+    let factorOver30DaysForAdult = 0;
+
+    let priceFor14DaysForStudent = 0;
+    let priceFor30DaysForStudent = 0;
+
+    let factorUnder30DaysForStudent = 0;
+    let factorOver30DaysForStudent = 0;
+
+    let priceFor14DaysForDiscountGroup = 0;
+    let priceFor30DaysForDiscountGroup = 0;
+
+    let factorUnder30DaysForDiscountGroup = 0;
+    let factorOver30DaysForDiscountGroup = 0;
 
     let zoneSelection = document.querySelector('#zoneSelection');
     selectedZone = zoneSelection.value;
     console.log("DEBUG: vyöhyke: " + selectedZone);
 
+    if (selectedZone == "ab" || selectedZone == "bc" || selectedZone == "d") {
+        priceFor14DaysForAdult = priceFor14DaysForAdultAB;
+        priceFor30DaysForAdult = priceFor30DaysForAdultAB;
+
+        factorUnder30DaysForAdult = factorUnder30DaysForAdultAB;
+        factorOver30DaysForAdult = factorOver30DaysForAdultAB;
+
+        priceFor14DaysForStudent = priceFor14DaysForStudentAB;
+        priceFor30DaysForStudent = priceFor30DaysForStudentAB;
+
+        factorUnder30DaysForStudent = factorUnder30DaysForStudentAB;
+        factorOver30DaysForStudent = factorOver30DaysForStudentAB;
+
+        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupAB;
+        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupAB;
+
+        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupAB;
+        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupAB;
+    } else if (selectedZone == "abc" || selectedZone == "bcd") {
+        priceFor14DaysForAdult = priceFor14DaysForAdultABC;
+        priceFor30DaysForAdult = priceFor30DaysForAdultABC;
+
+        factorUnder30DaysForAdult = factorUnder30DaysForAdultABC;
+        factorOver30DaysForAdult = factorOver30DaysForAdultABC;
+
+        priceFor14DaysForStudent = priceFor14DaysForStudentABC;
+        priceFor30DaysForStudent = priceFor30DaysForStudentABC;
+
+        factorUnder30DaysForStudent = factorUnder30DaysForStudentABC;
+        factorOver30DaysForStudent = factorOver30DaysForStudentABC;
+
+        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupABC;
+        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupABC;
+
+        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupABC;
+        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupABC;
+    } else if (selectedZone == "cd") {
+        priceFor14DaysForAdult = priceFor14DaysForAdultCD;
+        priceFor30DaysForAdult = priceFor30DaysForAdultCD;
+
+        factorUnder30DaysForAdult = factorUnder30DaysForAdultCD;
+        factorOver30DaysForAdult = factorOver30DaysForAdultCD;
+
+        priceFor14DaysForStudent = priceFor14DaysForStudentCD;
+        priceFor30DaysForStudent = priceFor30DaysForStudentCD;
+
+        factorUnder30DaysForStudent = factorUnder30DaysForStudentCD;
+        factorOver30DaysForStudent = factorOver30DaysForStudentCD;
+
+        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupCD;
+        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupCD;
+
+        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupCD;
+        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupCD;
+    } else if (selectedZone == "abcd") {
+        priceFor14DaysForAdult = priceFor14DaysForAdultABCD;
+        priceFor30DaysForAdult = priceFor30DaysForAdultABCD;
+
+        factorUnder30DaysForAdult = factorUnder30DaysForAdultABCD;
+        factorOver30DaysForAdult = factorOver30DaysForAdultABCD;
+
+        priceFor14DaysForStudent = priceFor14DaysForStudentABCD;
+        priceFor30DaysForStudent = priceFor30DaysForStudentABCD;
+
+        factorUnder30DaysForStudent = factorUnder30DaysForStudentABCD;
+        factorOver30DaysForStudent = factorOver30DaysForStudentABCD;
+
+        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupABCD;
+        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupABCD;
+
+        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupABCD;
+        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupABCD;
+    }
+
     let customerGroupSelection = document.querySelector('#customerGroupSelection');
     selectedCustomerGroup = customerGroupSelection.value;
     console.log("DEBUG: asiakasryhmä: " + selectedCustomerGroup);
-
-    // if (selectedCustomerGroup == "adult") {
-    //     discount = 1;
-    //     console.log("DEBUG: aikuisalennus: " + discount);
-
-    // } else if (selectedCustomerGroup == "child" || selectedCustomerGroup == "pensioner" || selectedCustomerGroup == "physicallyChallenged") {
-    //     discount = 0.5;
-    //     console.log("DEBUG: lapsi-, eläke- tai liikuntarajoitteisalennus: " + discount);
-
-    // } else if (selectedCustomerGroup == "student") {
-    //     discount = 0.55;
-    //     roundUp = true;
-    //     console.log("DEBUG: opiskelija-alennus: " + discount + ", pyöristys ylöspäin: " + roundUp);
-    // } else {
-    //     discount = 1;
-    //     console.log("DEBUG: muu alennus: " + discount);
-    // }
 
     let seasonDaysInput = document.querySelector('#seasonDaysInput');
     days = seasonDaysInput.value;
 
     if (days >= 14 && days <= 366) {
         if (days == 14) {
-
             if (selectedCustomerGroup == "adult") {
                 price1 = priceFor14DaysForAdult;
             } else if (selectedCustomerGroup == "student") {
                 price1 = priceFor14DaysForStudent;
+            }else{
+                // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
+                price1 = priceFor14DaysForDiscountGroup;
             }
-
-            //if (roundUp) {
-            //price1 = (Math.ceil(priceFor14DaysForAdult * 10 * discount)) / 10;
-            //} else {
-            //price1 = priceFor14DaysForAdult;
-            //}
 
         } else if (days > 14 && days < 30) {
             let calcDaysMinus14 = days - 14;
             if (selectedCustomerGroup == "adult") {
-                price1 = (Math.floor((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10)) / 10;
+                price1 = (Math.floor((priceFor14DaysForAdult + calcDaysMinus14 * factorUnder30DaysForAdult) * 10)) / 10;
             } else if (selectedCustomerGroup == "student") {
-                price1 = (Math.floor((priceFor14DaysForStudent + calcDaysMinus14 * factorForABZoneUnder30DaysForStudent) * 10)) / 10;
+                price1 = (Math.floor((priceFor14DaysForStudent + calcDaysMinus14 * factorUnder30DaysForStudent) * 10)) / 10;
+            } else {
+                // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
+                price1 = (Math.floor((priceFor14DaysForDiscountGroup + calcDaysMinus14 * factorUnder30DaysForDiscountGroup) * 10)) / 10;
             }
-
-
-            //if (roundUp) {
-            //console.log("DEBUG: laskemista");
-            // let test1 = priceFor14Days + calcDaysMinus14 * factorForABZoneUnder30Days;
-            // console.log(test1);
-
-            // let test2 = test1 * 10 * discount;
-            // console.log(test2);
-
-            //price1 = (Math.round((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10 * discount)) / 10;
-            //} else {
-            //price1 = (Math.floor((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10)) / 10;
-            //}
-
         } else if (days == 30) {
             if (selectedCustomerGroup == "adult") {
                 price1 = priceFor30DaysForAdult;
             } else if (selectedCustomerGroup == "student") {
                 price1 = priceFor30DaysForStudent;
+            } else {
+                // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
+                price1 = priceFor30DaysForDiscountGroup;
             }
 
         } else if (days > 30 && days < 367) {
             let calcDaysMinus30 = days - 30;
             if (selectedCustomerGroup == "adult") {
-                price1 = (Math.ceil((priceFor30DaysForAdult + calcDaysMinus30 * factorForABZoneOver30DaysForAdult) * 10)) / 10;
+                price1 = (Math.ceil((priceFor30DaysForAdult + calcDaysMinus30 * factorOver30DaysForAdult) * 10)) / 10;
             } else if (selectedCustomerGroup == "student") {
-                price1 = (Math.ceil((priceFor30DaysForStudent + calcDaysMinus30 * factorForABZoneOver30DaysForStudent) * 10)) / 10;
+                price1 = calcHelpForRounding(priceFor30DaysForStudent + calcDaysMinus30 * factorOver30DaysForStudent);
+                //price1 = (Math.ceil((priceFor30DaysForStudent + calcDaysMinus30 * factorForABZoneOver30DaysForStudent) * 10)) / 10;
+            } else {
+                // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
+                price1 = calcHelpForRounding(priceFor30DaysForDiscountGroup + calcDaysMinus30 * factorOver30DaysForDiscountGroup);
             }
 
         }
@@ -208,6 +371,54 @@ function calculateSeasonPrice() {
     priceElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
 
-function calculateSeasonStorePrices(price1) {
-    return [price1 + 1, price1 + 2, price1 * 1.035];
+function calculateSeasonStorePrices(price) {
+    return [price + 1, price + 2, price * 1.035];
+}
+
+function calcHelpForRounding(price) {
+
+    console.log("DEBUG: calcHelpForRounding");
+
+    console.log(price);
+
+    price = price.toFixed(2);
+
+    console.log(price);
+
+    let priceString = price.toString();
+
+    console.log(priceString);
+
+    let split = priceString.split(".");
+
+    console.log(split);
+
+    let value = split[1];
+
+    console.log(value);
+
+    let charAt = value.charAt(1);
+
+    console.log(charAt);
+
+    let parse = parseInt(charAt);
+
+    console.log(parse);
+
+    if (parse >= 4) {
+        price = price * 10;
+        console.log(price);
+        price = Math.ceil(price);
+        console.log(price);
+        price = price / 10;
+        console.log(price);
+    } else {
+        price = price * 10;
+        console.log(price);
+        price = Math.floor(price);
+        console.log(price);
+        price = price / 10;
+        console.log(price);
+    }
+    return price;
 }
