@@ -54,7 +54,7 @@ function calculateValuePrice() {
 
     let costElement3 = document.querySelector('#valueCost3');
     let cost3 = (parseFloat(price, 10) + 1);
-    costElement3.textContent = "~"+ cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement4 = document.querySelector('#valueCost4');
     let cost4 = (parseFloat(price, 10) + 1);
@@ -62,47 +62,59 @@ function calculateValuePrice() {
 }
 
 function calculateSeasonPrice() {
-    let price = 0;
+    let price1 = 0;
+    //let price2 = 0;
+    //let price3 = 0;
+    //let price4 = 0;
+    let prices = [0, 0, 0];
+
     let days = 0;
+
     let priceFor14Days = 40.40;
     let priceFor30Days = 59.70;
+
+    let factorForABZoneUnder30Days = 1.21;
+    let factorForABZoneOver30Days = 1.75;
 
     let seasonDaysInput = document.querySelector('#seasonDaysInput');
     days = seasonDaysInput.value;
 
     if (days == 14) {
-        console.log("DEBUG: tasan 14");
-        price = priceFor14Days;
+        price1 = priceFor14Days;
+        prices = calcSeasonPrices(price1);
+
     } else if (days > 14 && days < 30) {
-        console.log("DEBUG: 15-29, " + days);
         let calcDaysMinus14 = days - 14;
-        console.log("DEBUG: distance from 14: " + calcDaysMinus14);
-        price = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
+        price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
+        prices = calcSeasonPrices(price1);
+
     } else if (days == 30) {
-        console.log("DEBUG: tasan 30");
-        price = priceFor30Days;
+        price1 = priceFor30Days;
+        prices = calcSeasonPrices(price1);
+
     } else if (days > 30 && days < 367) {
-        console.log("DEBUG: 31-366, " + days);
         let calcDaysMinus30 = days - 30;
-        console.log("DEBUG: distance from 30: " + calcDaysMinus30);
-        price = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
+        price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
+        prices = calcSeasonPrices(price1);
+
     } else {
-        console.log("DEBUG: tämä luku ei sallittu: " + days);
-        
+        // alle 14 päivää tai yli 366 päivää
+        console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
     }
 
     let costElement1 = document.querySelector('#seasonCost1');
-    costElement1.textContent = price.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement1.textContent = price1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement2 = document.querySelector('#seasonCost2');
-    let cost2 = price + 1;
-    costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement2.textContent = prices[0].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement3 = document.querySelector('#seasonCost3');
-    let cost3 = price + 2;
-    costElement3.textContent = "~" + cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement3.textContent = prices[1].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
     let costElement4 = document.querySelector('#seasonCost4');
-    let cost4 = price * 1.035;
-    costElement4.textContent = cost4.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    costElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+}
+
+function calcSeasonPrices(price1) {
+    return [price1 + 1, price1 + 2, price1 * 1.035];
 }
