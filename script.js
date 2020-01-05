@@ -40,25 +40,35 @@ function showView0() {
 
 function calculateValuePrice() {
     let price = 0;
+    let price1 = 0;
+    let price2 = 0;
+    let price3 = 0;
+    let price4 = 0;
 
     let priceInputElement = document.querySelector('#valuePriceInput');
     price = priceInputElement.value;
 
-    let costElement1 = document.querySelector('#valueCost1');
-    let cost1 = (parseFloat(price, 10));
-    costElement1.textContent = cost1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    if (price >= 0.01) {
+        price1 = (parseFloat(price, 10));
+        price2 = (parseFloat(price, 10) + 1);
+        price3 = (parseFloat(price, 10) + 1);
+        price4 = (parseFloat(price, 10) + 1);
+    } else {
+        // alle 0.01
+        console.log("DEBUG: arvo '" + price + "' on alle 0.01 euroa.");
+    }
 
-    let costElement2 = document.querySelector('#valueCost2');
-    let cost2 = (parseFloat(price, 10) + 1);
-    costElement2.textContent = cost2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement1 = document.querySelector('#valueCost1');
+    priceElement1.textContent = price1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement3 = document.querySelector('#valueCost3');
-    let cost3 = (parseFloat(price, 10) + 1);
-    costElement3.textContent = cost3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement2 = document.querySelector('#valueCost2');
+    priceElement2.textContent = price2.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement4 = document.querySelector('#valueCost4');
-    let cost4 = (parseFloat(price, 10) + 1);
-    costElement4.textContent = cost4.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement3 = document.querySelector('#valueCost3');
+    priceElement3.textContent = price3.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+
+    let priceElement4 = document.querySelector('#valueCost4');
+    priceElement4.textContent = price4.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
 
 function calculateSeasonPrice() {
@@ -85,14 +95,14 @@ function calculateSeasonPrice() {
 
         } else if (days > 14 && days < 30) {
             let calcDaysMinus14 = days - 14;
-            price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
+            price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * factorForABZoneUnder30Days) * 10)) / 10;
 
         } else if (days == 30) {
             price1 = priceFor30Days;
 
         } else if (days > 30 && days < 367) {
             let calcDaysMinus30 = days - 30;
-            price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
+            price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * factorForABZoneOver30Days) * 10)) / 10;
         }
         prices = calcSeasonPrices(price1);
     } else {
@@ -100,17 +110,17 @@ function calculateSeasonPrice() {
         console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
     }
 
-    let costElement1 = document.querySelector('#seasonCost1');
-    costElement1.textContent = price1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement1 = document.querySelector('#seasonCost1');
+    priceElement1.textContent = price1.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement2 = document.querySelector('#seasonCost2');
-    costElement2.textContent = prices[0].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement2 = document.querySelector('#seasonCost2');
+    priceElement2.textContent = prices[0].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement3 = document.querySelector('#seasonCost3');
-    costElement3.textContent = prices[1].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement3 = document.querySelector('#seasonCost3');
+    priceElement3.textContent = prices[1].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 
-    let costElement4 = document.querySelector('#seasonCost4');
-    costElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    let priceElement4 = document.querySelector('#seasonCost4');
+    priceElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
 
 function calcSeasonPrices(price1) {
