@@ -79,24 +79,22 @@ function calculateSeasonPrice() {
     let seasonDaysInput = document.querySelector('#seasonDaysInput');
     days = seasonDaysInput.value;
 
-    if (days == 14) {
-        price1 = priceFor14Days;
-        prices = calcSeasonPrices(price1);
+    if (days >= 14 && days <= 366) {
+        if (days == 14) {
+            price1 = priceFor14Days;
 
-    } else if (days > 14 && days < 30) {
-        let calcDaysMinus14 = days - 14;
-        price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
-        prices = calcSeasonPrices(price1);
+        } else if (days > 14 && days < 30) {
+            let calcDaysMinus14 = days - 14;
+            price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * 1.21) * 10)) / 10;
 
-    } else if (days == 30) {
-        price1 = priceFor30Days;
-        prices = calcSeasonPrices(price1);
+        } else if (days == 30) {
+            price1 = priceFor30Days;
 
-    } else if (days > 30 && days < 367) {
-        let calcDaysMinus30 = days - 30;
-        price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
+        } else if (days > 30 && days < 367) {
+            let calcDaysMinus30 = days - 30;
+            price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * 1.75) * 10)) / 10;
+        }
         prices = calcSeasonPrices(price1);
-
     } else {
         // alle 14 päivää tai yli 366 päivää
         console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
