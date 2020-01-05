@@ -13,6 +13,9 @@ let seasonDaysInput = document.getElementById('seasonDaysInput');
 seasonDaysInput.addEventListener('input', calculateSeasonPrice);
 seasonDaysInput.addEventListener("keyup", closeSoftKeyboardWhenEnterPressed);
 
+document.getElementById('zoneSelection').addEventListener("change", calculateSeasonPrice);
+document.getElementById('customerGroupSelection').addEventListener("change", calculateSeasonPrice);
+
 function closeSoftKeyboardWhenEnterPressed(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
@@ -80,31 +83,113 @@ function calculateSeasonPrice() {
 
     let days = 0;
 
-    let priceFor14Days = 40.40;
-    let priceFor30Days = 59.70;
+    let selectedZone = "";
 
-    let factorForABZoneUnder30Days = 1.21;
-    let factorForABZoneOver30Days = 1.75;
+    let selectedCustomerGroup = "";
+
+    let priceFor14DaysForAdult = 40.40;
+    let priceFor30DaysForAdult = 59.70;
+
+    let factorForABZoneUnder30DaysForAdult = 1.21;
+    let factorForABZoneOver30DaysForAdult = 1.75;
+
+    let priceFor14DaysForStudent = 22.30;
+    let priceFor30DaysForStudent = 32.80;
+
+    let factorForABZoneUnder30DaysForStudent = 0.66;
+    let factorForABZoneOver30DaysForStudent = 0.96;
+
+    let priceFor14DaysForDiscountGroup = 20.20;
+    let priceFor30DaysForDiscountGroup = 29.90;
+
+    let factorForABZoneUnder30DaysForDiscountGroup = 0.61;
+    let factorForABZoneOver30DaysForDiscountGroup = 0.87;
+
+    //let discount = 0;
+    //let roundUp = false;
+
+    let zoneSelection = document.querySelector('#zoneSelection');
+    selectedZone = zoneSelection.value;
+    console.log("DEBUG: vyöhyke: " + selectedZone);
+
+    let customerGroupSelection = document.querySelector('#customerGroupSelection');
+    selectedCustomerGroup = customerGroupSelection.value;
+    console.log("DEBUG: asiakasryhmä: " + selectedCustomerGroup);
+
+    // if (selectedCustomerGroup == "adult") {
+    //     discount = 1;
+    //     console.log("DEBUG: aikuisalennus: " + discount);
+
+    // } else if (selectedCustomerGroup == "child" || selectedCustomerGroup == "pensioner" || selectedCustomerGroup == "physicallyChallenged") {
+    //     discount = 0.5;
+    //     console.log("DEBUG: lapsi-, eläke- tai liikuntarajoitteisalennus: " + discount);
+
+    // } else if (selectedCustomerGroup == "student") {
+    //     discount = 0.55;
+    //     roundUp = true;
+    //     console.log("DEBUG: opiskelija-alennus: " + discount + ", pyöristys ylöspäin: " + roundUp);
+    // } else {
+    //     discount = 1;
+    //     console.log("DEBUG: muu alennus: " + discount);
+    // }
 
     let seasonDaysInput = document.querySelector('#seasonDaysInput');
     days = seasonDaysInput.value;
 
     if (days >= 14 && days <= 366) {
         if (days == 14) {
-            price1 = priceFor14Days;
+
+            if (selectedCustomerGroup == "adult") {
+                price1 = priceFor14DaysForAdult;
+            } else if (selectedCustomerGroup == "student") {
+                price1 = priceFor14DaysForStudent;
+            }
+
+            //if (roundUp) {
+            //price1 = (Math.ceil(priceFor14DaysForAdult * 10 * discount)) / 10;
+            //} else {
+            //price1 = priceFor14DaysForAdult;
+            //}
 
         } else if (days > 14 && days < 30) {
             let calcDaysMinus14 = days - 14;
-            price1 = (Math.floor((priceFor14Days + calcDaysMinus14 * factorForABZoneUnder30Days) * 10)) / 10;
+            if (selectedCustomerGroup == "adult") {
+                price1 = (Math.floor((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10)) / 10;
+            } else if (selectedCustomerGroup == "student") {
+                price1 = (Math.floor((priceFor14DaysForStudent + calcDaysMinus14 * factorForABZoneUnder30DaysForStudent) * 10)) / 10;
+            }
+
+
+            //if (roundUp) {
+            //console.log("DEBUG: laskemista");
+            // let test1 = priceFor14Days + calcDaysMinus14 * factorForABZoneUnder30Days;
+            // console.log(test1);
+
+            // let test2 = test1 * 10 * discount;
+            // console.log(test2);
+
+            //price1 = (Math.round((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10 * discount)) / 10;
+            //} else {
+            //price1 = (Math.floor((priceFor14DaysForAdult + calcDaysMinus14 * factorForABZoneUnder30DaysForAdult) * 10)) / 10;
+            //}
 
         } else if (days == 30) {
-            price1 = priceFor30Days;
+            if (selectedCustomerGroup == "adult") {
+                price1 = priceFor30DaysForAdult;
+            } else if (selectedCustomerGroup == "student") {
+                price1 = priceFor30DaysForStudent;
+            }
 
         } else if (days > 30 && days < 367) {
             let calcDaysMinus30 = days - 30;
-            price1 = (Math.ceil((priceFor30Days + calcDaysMinus30 * factorForABZoneOver30Days) * 10)) / 10;
+            if (selectedCustomerGroup == "adult") {
+                price1 = (Math.ceil((priceFor30DaysForAdult + calcDaysMinus30 * factorForABZoneOver30DaysForAdult) * 10)) / 10;
+            } else if (selectedCustomerGroup == "student") {
+                price1 = (Math.ceil((priceFor30DaysForStudent + calcDaysMinus30 * factorForABZoneOver30DaysForStudent) * 10)) / 10;
+            }
+
         }
-        prices = calcSeasonPrices(price1);
+        prices = calculateSeasonStorePrices(price1);
     } else {
         // alle 14 päivää tai yli 366 päivää
         console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
@@ -123,6 +208,6 @@ function calculateSeasonPrice() {
     priceElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
 
-function calcSeasonPrices(price1) {
+function calculateSeasonStorePrices(price1) {
     return [price1 + 1, price1 + 2, price1 * 1.035];
 }
