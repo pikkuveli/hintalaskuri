@@ -289,21 +289,39 @@ function calcHelpForRounding(price) {
 
     console.log(value);
 
+    let charAt0 = value.charAt(0);
+
+    console.log(charAt0);
+
     let charAt = value.charAt(1);
 
     console.log(charAt);
+
+    let parse0 = parseInt(charAt0);
+
+    console.log(parse0);
 
     let parse = parseInt(charAt);
 
     console.log(parse);
 
     if (parse >= 4) {
-        price = price * 10;
-        console.log(price);
-        price = Math.ceil(price);
-        console.log(price);
-        price = price / 10;
-        console.log(price);
+
+        if (parse0 == 0) {
+            price = price * 10;
+            console.log(price);
+            price = Math.floor(price);
+            console.log(price);
+            price = price / 10;
+            console.log(price);
+        } else {
+            price = price * 10;
+            console.log(price);
+            price = Math.ceil(price);
+            console.log(price);
+            price = price / 10;
+            console.log(price);
+        }        
     } else {
         price = price * 10;
         console.log(price);
