@@ -66,35 +66,41 @@
     <div id="view2" class="container">
         <h2>Kausilippulaskuri</h2>
 
-        <p>
-            Syötä kausilipun kesto: 
-            <input id="seasonDaysInput" type="number" min="14" max="366" step="1"> 
-            vrk
-        </p>
-
-        <p>
-            Vyöhyke:
-            <select id="zoneSelection">
-                <option value="ab">AB</option>
-                <option value="abc">ABC</option>
-                <option value="abcd">ABCD</option>
-                <option value="bc">BC</option>
-                <option value="bcd">BCD</option>
-                <option value="cd">CD</option>
-                <option value="d">D</option>
-            </select>
-        </p>
-
-        <p>
-            Asiakasryhmä:
-            <select id="customerGroupSelection">
-                <option value="adult">Aikuinen</option>
-                <option value="child">Lapsi 7–17 v.</option>
-                <option value="student">Opiskelija</option>
-                <option value="pensioner">Eläkeläinen</option>
-                <option value="physicallyChallenged">Liikuntarajoitteinen</option>
-            </select>
-        </p>
+        <div class="row">
+            <div class="col-sm">
+                <p>
+                    Syötä kausilipun kesto (14-366 vrk):
+                    <input id="seasonDaysInput" type="number" min="14" max="366" step="1">
+                    <span id="errorMessageForSeasonDaysInput"></span>
+                </p>
+            </div>
+            <div class="col-sm">
+                <p>
+                    Vyöhyke:
+                    <select id="zoneSelection">
+                        <option value="ab">AB</option>
+                        <option value="abc">ABC</option>
+                        <option value="abcd">ABCD</option>
+                        <option value="bc">BC</option>
+                        <option value="bcd">BCD</option>
+                        <option value="cd">CD</option>
+                        <option value="d">D</option>
+                    </select>
+                </p>
+            </div>
+            <div class="col-sm">
+                <p>
+                    Asiakasryhmä:
+                    <select id="customerGroupSelection">
+                        <option value="adult">Aikuinen</option>
+                        <option value="child">Lapsi 7–17 v.</option>
+                        <option value="student">Opiskelija</option>
+                        <option value="pensioner">Eläkeläinen</option>
+                        <option value="physicallyChallenged">Liikuntarajoitteinen</option>
+                    </select>
+                </p>
+            </div>
+        </div>
 
         <h2>Hinnat</h2>
         
