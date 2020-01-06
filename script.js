@@ -315,7 +315,7 @@ function calculateSeasonPrice() {
                 price1 = priceFor14DaysForAdult;
             } else if (selectedCustomerGroup == "student") {
                 price1 = priceFor14DaysForStudent;
-            }else{
+            } else {
                 // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
                 price1 = priceFor14DaysForDiscountGroup;
             }
@@ -358,9 +358,9 @@ function calculateSeasonPrice() {
         // alle 14 päivää tai yli 366 päivää
         console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
         let errorMessageForSeasonDaysInput = document.querySelector('#errorMessageForSeasonDaysInput');
-        if(days<14){
+        if (days < 14) {
             errorMessageForSeasonDaysInput.textContent = "Kesto on alle 14 päivää.";
-        }else{
+        } else {
             // yli 366 päivää
             errorMessageForSeasonDaysInput.textContent = "Kesto on yli 366 päivää.";
         }
