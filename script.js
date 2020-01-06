@@ -1,20 +1,6 @@
-// document.getElementById('view1').style.display = "none";
-// document.getElementById('view2').style.display = "none";
-
-// document.getElementById('btnView0').addEventListener("click", showView0);
-// document.getElementById('btnView1').addEventListener("click", showView1);
-// document.getElementById('btnView2').addEventListener("click", showView2);
-
-//document.getElementById('btnView12').addEventListener("click", showView1);
-//document.getElementById('btnView22').addEventListener("click", showView2);
-
 let valuePriceInput = document.getElementById('valuePriceInput');
 valuePriceInput.addEventListener('input', calculateValuePrice);
 valuePriceInput.addEventListener("keyup", closeSoftKeyboardWhenEnterPressed);
-
-//let seasonDaysInput = document.getElementById('seasonDaysInput');
-//seasonDaysInput.addEventListener('input', calculateSeasonPrice);
-//seasonDaysInput.addEventListener("keyup", closeSoftKeyboardWhenEnterPressed);
 
 document.getElementById('seasonDaysSelection').addEventListener("change", calculateSeasonPrice);
 document.getElementById('zoneSelection').addEventListener("change", calculateSeasonPrice);
@@ -26,24 +12,6 @@ function closeSoftKeyboardWhenEnterPressed(event) {
         document.activeElement.blur();
     }
 }
-
-// function showView1() {
-//     document.getElementById('view0').style.display = "none";
-//     document.getElementById('view1').style.display = "block";
-//     document.getElementById('view2').style.display = "none";
-// }
-
-// function showView2() {
-//     document.getElementById('view0').style.display = "none";
-//     document.getElementById('view1').style.display = "none";
-//     document.getElementById('view2').style.display = "block";
-// }
-
-// function showView0() {
-//     document.getElementById('view0').style.display = "block";
-//     document.getElementById('view1').style.display = "none";
-//     document.getElementById('view2').style.display = "none";
-// }
 
 function calculateValuePrice() {
     let price = 0;
@@ -62,7 +30,6 @@ function calculateValuePrice() {
         price4 = (parseFloat(price, 10) + 1);
     } else {
         // alle 0.01
-        console.log("DEBUG: arvo '" + price + "' on alle 0.01 euroa.");
     }
 
     let priceElement1 = document.querySelector('#valueCost1');
@@ -118,15 +85,12 @@ function calculateSeasonPrice() {
 
     let seasonDaysSelection = document.querySelector('#seasonDaysSelection');
     selectedSeasonDays = seasonDaysSelection.value;
-    console.log("DEBUG: päiviä: " + selectedSeasonDays);
 
     let zoneSelection = document.querySelector('#zoneSelection');
     selectedZone = zoneSelection.value;
-    console.log("DEBUG: vyöhyke: " + selectedZone);
 
     let customerGroupSelection = document.querySelector('#customerGroupSelection');
     selectedCustomerGroup = customerGroupSelection.value;
-    console.log("DEBUG: asiakasryhmä: " + selectedCustomerGroup);
 
     // Hinnat valitun vyöhykkeen perusteella:
     if (selectedZone == "ab" || selectedZone == "bc" || selectedZone == "d") {
@@ -147,11 +111,6 @@ function calculateSeasonPrice() {
         student = studentABCD;
     }
 
-    console.log("DEBUG: hintataulukot:");
-    console.log(adult);
-    console.log(discount);
-    console.log(student);
-
     let customerGroup = -1;
 
     if (selectedCustomerGroup == "adult") {
@@ -165,9 +124,6 @@ function calculateSeasonPrice() {
         customerGroup = 2;
     }
 
-    console.log("DEBUG: valittu hintataulukko:");
-    console.log(priceArray);
-
     if (selectedSeasonDays == "14") {
         price1 = priceArray[0];
     } else if (selectedSeasonDays == "30") {
@@ -180,13 +136,8 @@ function calculateSeasonPrice() {
         price1 = priceArray[4];
     }
 
-    console.log("DEBUG: lopullinen hinta:");
-    console.log(price1);
-    
-    console.log("DEBUG: kauppojen hinnat:");
     if (selectedSeasonDays != "empty"){
         prices = calculateSeasonStorePrices(price1, customerGroup);
-        console.log(prices);
     }
 
     let priceElement1 = document.querySelector('#seasonCost1');
@@ -216,10 +167,6 @@ $(document).ready(function () {
     $(".nav-tabs a").click(function () {
         $(this).tab('show');
     });
-    // $("#home a").click(function () {
-    //     $(this).tab('show');
-    //     $('li nav-item').removeClass('active');
-    // });
     $("#linkToCalc1").click(function (event) {
         $('.tab2').tab('show');
     });
