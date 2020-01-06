@@ -335,3 +335,7 @@ function calcHelpForRounding(price) {
     }
     return price;
 }
+
+$(document).ready(function () {
+    $('[data-toggle="popover"]').popover({ html: true });
+});
