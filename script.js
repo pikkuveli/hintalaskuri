@@ -152,12 +152,17 @@ function calculateSeasonPrice() {
     console.log(discount);
     console.log(student);
 
+    let customerGroup = -1;
+
     if (selectedCustomerGroup == "adult") {
         priceArray = adult;
+        customerGroup = 0;
     } else if (selectedCustomerGroup == "child" || selectedCustomerGroup == "pensioner" || selectedCustomerGroup == "physicallyChallenged") {
         priceArray = discount;
+        customerGroup = 1;
     } else if (selectedCustomerGroup == "student") {
         priceArray = student;
+        customerGroup = 2;
     }
 
     console.log("DEBUG: valittu hintataulukko:");
@@ -180,7 +185,7 @@ function calculateSeasonPrice() {
     
     console.log("DEBUG: kauppojen hinnat:");
     if (selectedSeasonDays != "empty"){
-        prices = calculateSeasonStorePrices(price1);
+        prices = calculateSeasonStorePrices(price1, customerGroup);
         console.log(prices);
     }
     
@@ -366,7 +371,12 @@ function calculateSeasonPrice() {
     priceElement4.textContent = prices[2].toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
 }
 
-function calculateSeasonStorePrices(price) {
+function calculateSeasonStorePrices(price, customerGroup) {
+    // student or discount group: different price in K-ryhmä (1 euro)
+    if (customerGroup == 1 || customerGroup == 2) { 
+        return [price + 1, price + 1, price * 1.035];
+    }
+    // adult: different price in K-ryhmä (2 euros)
     return [price + 1, price + 2, price * 1.035];
 }
 
