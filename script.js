@@ -82,6 +82,10 @@ function calculateSeasonPrice() {
     let price1 = 0;
     let prices = [0, 0, 0];
 
+    let adult = [0.0, 0.0, 0.0, 0.0, 0.0];
+    let discount = [0.0, 0.0, 0.0, 0.0, 0.0];
+    let student = [0.0, 0.0, 0.0, 0.0, 0.0];
+
     // AB = BC = D:
     let adultAB = [40.4, 59.7, 112.2, 164.7, 637.2];
     let discountAB = [20.2, 29.9, 56.0, 82.1, 317.0];
@@ -121,6 +125,25 @@ function calculateSeasonPrice() {
     let customerGroupSelection = document.querySelector('#customerGroupSelection');
     selectedCustomerGroup = customerGroupSelection.value;
     console.log("DEBUG: asiakasryhmä: " + selectedCustomerGroup);
+
+    // Hinnat valitun vyöhykkeen perusteella:
+    if (selectedZone == "ab" || selectedZone == "bc" || selectedZone == "d") {
+        adult = adultAB;
+        discount = discountAB;
+        student = studentAB;
+    } else if (selectedZone == "abc" || selectedZone == "bcd") {
+        adult = adultABC;
+        discount = discountABC;
+        student = studentABC;
+    } else if (selectedZone == "cd") {
+        adult = adultCD;
+        discount = discountCD;
+        student = studentCD;
+    } else if (selectedZone == "abcd") {
+        adult = adultABCD;
+        discount = discountABCD;
+        student = studentABCD;
+    }
 
     // Yleiset:
 
