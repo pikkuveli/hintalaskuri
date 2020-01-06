@@ -76,9 +76,6 @@ function calculateValuePrice() {
 
 function calculateSeasonPrice() {
     let price1 = 0;
-    //let price2 = 0;
-    //let price3 = 0;
-    //let price4 = 0;
     let prices = [0, 0, 0];
 
     let days = 0;
@@ -86,122 +83,6 @@ function calculateSeasonPrice() {
     let selectedZone = "";
 
     let selectedCustomerGroup = "";
-
-    // AB:
-
-    let priceFor14DaysForAdultAB = 40.40;
-    let priceFor30DaysForAdultAB = 59.70;
-
-    let factorUnder30DaysForAdultAB = 1.21;
-    let factorOver30DaysForAdultAB = 1.75;
-
-    let priceFor14DaysForStudentAB = 22.30;
-    let priceFor30DaysForStudentAB = 32.80;
-
-    let factorUnder30DaysForStudentAB = 0.66;
-    let factorOver30DaysForStudentAB = 0.96;
-
-    let priceFor14DaysForDiscountGroupAB = 20.20;
-    let priceFor30DaysForDiscountGroupAB = 29.90;
-
-    let factorUnder30DaysForDiscountGroupAB = 0.61;
-    let factorOver30DaysForDiscountGroupAB = 0.87;
-
-    // let priceFor14DaysForAdultBC = 40.40;
-    // let priceFor30DaysForAdultBC = 59.70;
-
-    // let factorUnder30DaysForAdultBC = 1.21;
-    // let factorOver30DaysForAdultBC = 1.75;
-
-    // let priceFor14DaysForStudentBC = 22.30;
-    // let priceFor30DaysForStudentBC = 32.80;
-
-    // let factorUnder30DaysForStudentBC = 0.66;
-    // let factorOver30DaysForStudentBC = 0.96;
-
-    // let priceFor14DaysForDiscountGroupBC = 20.20;
-    // let priceFor30DaysForDiscountGroupBC = 29.90;
-
-    // let factorUnder30DaysForDiscountGroupBC = 0.61;
-    // let factorOver30DaysForDiscountGroupBC = 0.87;
-
-    // let priceFor14DaysForAdultD = 40.40;
-    // let priceFor30DaysForAdultD = 59.70;
-
-    // let factorUnder30DaysForAdultD = 1.21;
-    // let factorOver30DaysForAdultD = 1.75;
-
-    // let priceFor14DaysForStudentD = 22.30;
-    // let priceFor30DaysForStudentD = 32.80;
-
-    // let factorUnder30DaysForStudentD = 0.66;
-    // let factorOver30DaysForStudentD = 0.96;
-
-    // let priceFor14DaysForDiscountGroupD = 20.20;
-    // let priceFor30DaysForDiscountGroupD = 29.90;
-
-    // let factorUnder30DaysForDiscountGroupD = 0.61;
-    // let factorOver30DaysForDiscountGroupD = 0.87;
-
-    // ABC:
-
-    let priceFor14DaysForAdultABC = 65.70;
-    let priceFor30DaysForAdultABC = 96.70;
-
-    let factorUnder30DaysForAdultABC = 1.94;
-    let factorOver30DaysForAdultABC = 2.83;
-
-    let priceFor14DaysForStudentABC = 36.00;
-    let priceFor30DaysForStudentABC = 53.20;
-
-    let factorUnder30DaysForStudentABC = 1.08;
-    let factorOver30DaysForStudentABC = 1.56;
-
-    let priceFor14DaysForDiscountGroupABC = 33.10;
-    let priceFor30DaysForDiscountGroupABC = 48.40;
-
-    let factorUnder30DaysForDiscountGroupABC = 0.96;
-    let factorOver30DaysForDiscountGroupABC = 1.42;
-
-    // CD:
-
-    let priceFor14DaysForAdultCD = 52.70;
-    let priceFor30DaysForAdultCD = 77.60;
-
-    let factorUnder30DaysForAdultCD = 1.56;
-    let factorOver30DaysForAdultCD = 2.27;
-
-    let priceFor14DaysForStudentCD = 29.00;
-    let priceFor30DaysForStudentCD = 42.70;
-
-    let factorUnder30DaysForStudentCD = 0.86;
-    let factorOver30DaysForStudentCD = 1.25;
-
-    let priceFor14DaysForDiscountGroupCD = 26.40;
-    let priceFor30DaysForDiscountGroupCD = 38.80;
-
-    let factorUnder30DaysForDiscountGroupCD = 0.78;
-    let factorOver30DaysForDiscountGroupCD = 1.13;
-
-    // ABCD:
-
-    let priceFor14DaysForAdultABCD = 94.60;
-    let priceFor30DaysForAdultABCD = 139.70;
-
-    let factorUnder30DaysForAdultABCD = 2.82;
-    let factorOver30DaysForAdultABCD = 4.09;
-
-    let priceFor14DaysForStudentABCD = 52.00;
-    let priceFor30DaysForStudentABCD = 76.80;
-
-    let factorUnder30DaysForStudentABCD = 1.55;
-    let factorOver30DaysForStudentABCD = 2.25;
-
-    let priceFor14DaysForDiscountGroupABCD = 47.40;
-    let priceFor30DaysForDiscountGroupABCD = 69.90;
-
-    let factorUnder30DaysForDiscountGroupABCD = 1.41;
-    let factorOver30DaysForDiscountGroupABCD = 2.04;
 
     // Yleiset:
 
@@ -228,77 +109,80 @@ function calculateSeasonPrice() {
     console.log("DEBUG: vyöhyke: " + selectedZone);
 
     if (selectedZone == "ab" || selectedZone == "bc" || selectedZone == "d") {
-        priceFor14DaysForAdult = priceFor14DaysForAdultAB;
-        priceFor30DaysForAdult = priceFor30DaysForAdultAB;
+        priceFor14DaysForAdult = 40.40;
+        priceFor30DaysForAdult = 59.70;
 
-        factorUnder30DaysForAdult = factorUnder30DaysForAdultAB;
-        factorOver30DaysForAdult = factorOver30DaysForAdultAB;
+        factorUnder30DaysForAdult = 1.21;
+        factorOver30DaysForAdult = 1.75;
 
-        priceFor14DaysForStudent = priceFor14DaysForStudentAB;
-        priceFor30DaysForStudent = priceFor30DaysForStudentAB;
+        priceFor14DaysForStudent = 22.30;
+        priceFor30DaysForStudent = 32.80;
 
-        factorUnder30DaysForStudent = factorUnder30DaysForStudentAB;
-        factorOver30DaysForStudent = factorOver30DaysForStudentAB;
+        factorUnder30DaysForStudent = 0.66;
+        factorOver30DaysForStudent = 0.96;
 
-        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupAB;
-        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupAB;
+        priceFor14DaysForDiscountGroup = 20.20;
+        priceFor30DaysForDiscountGroup = 29.90;
 
-        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupAB;
-        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupAB;
+        factorUnder30DaysForDiscountGroup = 0.61;
+        factorOver30DaysForDiscountGroup = 0.87;
+
     } else if (selectedZone == "abc" || selectedZone == "bcd") {
-        priceFor14DaysForAdult = priceFor14DaysForAdultABC;
-        priceFor30DaysForAdult = priceFor30DaysForAdultABC;
+        priceFor14DaysForAdult = 65.70;
+        priceFor30DaysForAdult = 96.70;
 
-        factorUnder30DaysForAdult = factorUnder30DaysForAdultABC;
-        factorOver30DaysForAdult = factorOver30DaysForAdultABC;
+        factorUnder30DaysForAdult = 1.94;
+        factorOver30DaysForAdult = 2.83;
 
-        priceFor14DaysForStudent = priceFor14DaysForStudentABC;
-        priceFor30DaysForStudent = priceFor30DaysForStudentABC;
+        priceFor14DaysForStudent = 36.00;
+        priceFor30DaysForStudent = 53.20;
 
-        factorUnder30DaysForStudent = factorUnder30DaysForStudentABC;
-        factorOver30DaysForStudent = factorOver30DaysForStudentABC;
+        factorUnder30DaysForStudent = 1.08;
+        factorOver30DaysForStudent = 1.56;
 
-        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupABC;
-        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupABC;
+        priceFor14DaysForDiscountGroup = 33.10;
+        priceFor30DaysForDiscountGroup = 48.40;
 
-        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupABC;
-        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupABC;
+        factorUnder30DaysForDiscountGroup = 0.96;
+        factorOver30DaysForDiscountGroup = 1.42;
+
     } else if (selectedZone == "cd") {
-        priceFor14DaysForAdult = priceFor14DaysForAdultCD;
-        priceFor30DaysForAdult = priceFor30DaysForAdultCD;
+        priceFor14DaysForAdult = 52.70;
+        priceFor30DaysForAdult = 77.60;
 
-        factorUnder30DaysForAdult = factorUnder30DaysForAdultCD;
-        factorOver30DaysForAdult = factorOver30DaysForAdultCD;
+        factorUnder30DaysForAdult = 1.56;
+        factorOver30DaysForAdult = 2.27;
 
-        priceFor14DaysForStudent = priceFor14DaysForStudentCD;
-        priceFor30DaysForStudent = priceFor30DaysForStudentCD;
+        priceFor14DaysForStudent = 29.00;
+        priceFor30DaysForStudent = 42.70;
 
-        factorUnder30DaysForStudent = factorUnder30DaysForStudentCD;
-        factorOver30DaysForStudent = factorOver30DaysForStudentCD;
+        factorUnder30DaysForStudent = 0.86;
+        factorOver30DaysForStudent = 1.25;
 
-        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupCD;
-        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupCD;
+        priceFor14DaysForDiscountGroup = 26.40;
+        priceFor30DaysForDiscountGroup = 38.80;
 
-        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupCD;
-        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupCD;
+        factorUnder30DaysForDiscountGroup = 0.78;
+        factorOver30DaysForDiscountGroup = 1.13;
+
     } else if (selectedZone == "abcd") {
-        priceFor14DaysForAdult = priceFor14DaysForAdultABCD;
-        priceFor30DaysForAdult = priceFor30DaysForAdultABCD;
+        priceFor14DaysForAdult = 94.60;
+        priceFor30DaysForAdult = 139.70;
 
-        factorUnder30DaysForAdult = factorUnder30DaysForAdultABCD;
-        factorOver30DaysForAdult = factorOver30DaysForAdultABCD;
+        factorUnder30DaysForAdult = 2.82;
+        factorOver30DaysForAdult = 4.09;
 
-        priceFor14DaysForStudent = priceFor14DaysForStudentABCD;
-        priceFor30DaysForStudent = priceFor30DaysForStudentABCD;
+        priceFor14DaysForStudent = 52.00;
+        priceFor30DaysForStudent = 76.80;
 
-        factorUnder30DaysForStudent = factorUnder30DaysForStudentABCD;
-        factorOver30DaysForStudent = factorOver30DaysForStudentABCD;
+        factorUnder30DaysForStudent = 1.55;
+        factorOver30DaysForStudent = 2.25;
 
-        priceFor14DaysForDiscountGroup = priceFor14DaysForDiscountGroupABCD;
-        priceFor30DaysForDiscountGroup = priceFor30DaysForDiscountGroupABCD;
+        priceFor14DaysForDiscountGroup = 47.40;
+        priceFor30DaysForDiscountGroup = 69.90;
 
-        factorUnder30DaysForDiscountGroup = factorUnder30DaysForDiscountGroupABCD;
-        factorOver30DaysForDiscountGroup = factorOver30DaysForDiscountGroupABCD;
+        factorUnder30DaysForDiscountGroup = 1.41;
+        factorOver30DaysForDiscountGroup = 2.04;
     }
 
     let customerGroupSelection = document.querySelector('#customerGroupSelection');
