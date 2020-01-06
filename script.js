@@ -1,12 +1,12 @@
-document.getElementById('view1').style.display = "none";
-document.getElementById('view2').style.display = "none";
+// document.getElementById('view1').style.display = "none";
+// document.getElementById('view2').style.display = "none";
 
-document.getElementById('btnView0').addEventListener("click", showView0);
-document.getElementById('btnView1').addEventListener("click", showView1);
-document.getElementById('btnView2').addEventListener("click", showView2);
+// document.getElementById('btnView0').addEventListener("click", showView0);
+// document.getElementById('btnView1').addEventListener("click", showView1);
+// document.getElementById('btnView2').addEventListener("click", showView2);
 
-document.getElementById('btnView12').addEventListener("click", showView1);
-document.getElementById('btnView22').addEventListener("click", showView2);
+//document.getElementById('btnView12').addEventListener("click", showView1);
+//document.getElementById('btnView22').addEventListener("click", showView2);
 
 let valuePriceInput = document.getElementById('valuePriceInput');
 valuePriceInput.addEventListener('input', calculateValuePrice);
