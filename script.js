@@ -82,6 +82,8 @@ function calculateSeasonPrice() {
     let price1 = 0;
     let prices = [0, 0, 0];
 
+    let priceArray = [0.0, 0.0, 0.0, 0.0, 0.0];
+
     let adult = [0.0, 0.0, 0.0, 0.0, 0.0];
     let discount = [0.0, 0.0, 0.0, 0.0, 0.0];
     let student = [0.0, 0.0, 0.0, 0.0, 0.0];
@@ -144,6 +146,45 @@ function calculateSeasonPrice() {
         discount = discountABCD;
         student = studentABCD;
     }
+
+    console.log("DEBUG: hintataulukot:");
+    console.log(adult);
+    console.log(discount);
+    console.log(student);
+
+    if (selectedCustomerGroup == "adult") {
+        priceArray = adult;
+    } else if (selectedCustomerGroup == "child" || selectedCustomerGroup == "pensioner" || selectedCustomerGroup == "physicallyChallenged") {
+        priceArray = discount;
+    } else if (selectedCustomerGroup == "student") {
+        priceArray = student;
+    }
+
+    console.log("DEBUG: valittu hintataulukko:");
+    console.log(priceArray);
+
+    if (selectedSeasonDays == "14") {
+        price1 = priceArray[0];
+    } else if (selectedSeasonDays == "30") {
+        price1 = priceArray[1];
+    } else if (selectedSeasonDays == "60") {
+        price1 = priceArray[2];
+    } else if (selectedSeasonDays == "90") {
+        price1 = priceArray[3];
+    } else if (selectedSeasonDays == "360") {
+        price1 = priceArray[4];
+    }
+
+    console.log("DEBUG: lopullinen hinta:");
+    console.log(price1);
+    
+    console.log("DEBUG: kauppojen hinnat:");
+    if (selectedSeasonDays != "empty"){
+        prices = calculateSeasonStorePrices(price1);
+        console.log(prices);
+    }
+    
+    
 
     // Yleiset:
 
