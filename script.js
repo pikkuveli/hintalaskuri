@@ -26,23 +26,23 @@ function closeSoftKeyboardWhenEnterPressed(event) {
     }
 }
 
-function showView1() {
-    document.getElementById('view0').style.display = "none";
-    document.getElementById('view1').style.display = "block";
-    document.getElementById('view2').style.display = "none";
-}
+// function showView1() {
+//     document.getElementById('view0').style.display = "none";
+//     document.getElementById('view1').style.display = "block";
+//     document.getElementById('view2').style.display = "none";
+// }
 
-function showView2() {
-    document.getElementById('view0').style.display = "none";
-    document.getElementById('view1').style.display = "none";
-    document.getElementById('view2').style.display = "block";
-}
+// function showView2() {
+//     document.getElementById('view0').style.display = "none";
+//     document.getElementById('view1').style.display = "none";
+//     document.getElementById('view2').style.display = "block";
+// }
 
-function showView0() {
-    document.getElementById('view0').style.display = "block";
-    document.getElementById('view1').style.display = "none";
-    document.getElementById('view2').style.display = "none";
-}
+// function showView0() {
+//     document.getElementById('view0').style.display = "block";
+//     document.getElementById('view1').style.display = "none";
+//     document.getElementById('view2').style.display = "none";
+// }
 
 function calculateValuePrice() {
     let price = 0;
@@ -230,13 +230,14 @@ function calculateSeasonPrice() {
         } else if (days > 30 && days < 367) {
             let calcDaysMinus30 = days - 30;
             if (selectedCustomerGroup == "adult") {
-                price1 = (Math.ceil((priceFor30DaysForAdult + calcDaysMinus30 * factorOver30DaysForAdult) * 10)) / 10;
+                //price1 = (Math.ceil((priceFor30DaysForAdult + calcDaysMinus30 * factorOver30DaysForAdult) * 10)) / 10;
+                price1 = calcHelpForRounding(priceFor30DaysForAdult + calcDaysMinus30 * factorOver30DaysForAdult, 8);
             } else if (selectedCustomerGroup == "student") {
-                price1 = calcHelpForRounding(priceFor30DaysForStudent + calcDaysMinus30 * factorOver30DaysForStudent);
+                price1 = calcHelpForRounding(priceFor30DaysForStudent + calcDaysMinus30 * factorOver30DaysForStudent, 4);
                 //price1 = (Math.ceil((priceFor30DaysForStudent + calcDaysMinus30 * factorForABZoneOver30DaysForStudent) * 10)) / 10;
             } else {
                 // lapset, eläkeläiset ja liikuntarajoitteiset ihmiset:
-                price1 = calcHelpForRounding(priceFor30DaysForDiscountGroup + calcDaysMinus30 * factorOver30DaysForDiscountGroup);
+                price1 = calcHelpForRounding(priceFor30DaysForDiscountGroup + calcDaysMinus30 * factorOver30DaysForDiscountGroup, 4);
             }
 
         }
@@ -270,7 +271,7 @@ function calculateSeasonStorePrices(price) {
     return [price + 1, price + 2, price * 1.035];
 }
 
-function calcHelpForRounding(price) {
+function calcHelpForRounding(price, roundingUpNumber) {
 
     console.log("DEBUG: calcHelpForRounding");
 
@@ -308,7 +309,7 @@ function calcHelpForRounding(price) {
 
     console.log(parse);
 
-    if (parse >= 4) {
+    if (parse >= roundingUpNumber) {
 
         if (parse0 == 0) {
             price = price * 10;
