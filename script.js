@@ -309,6 +309,7 @@ function calculateSeasonPrice() {
     days = seasonDaysInput.value;
 
     if (days >= 14 && days <= 366) {
+        errorMessageForSeasonDaysInput.textContent = "";
         if (days == 14) {
             if (selectedCustomerGroup == "adult") {
                 price1 = priceFor14DaysForAdult;
@@ -356,6 +357,13 @@ function calculateSeasonPrice() {
     } else {
         // alle 14 päivää tai yli 366 päivää
         console.log("DEBUG: arvo '" + days + "' on alle 14 päivää tai yli 366 päivää.");
+        let errorMessageForSeasonDaysInput = document.querySelector('#errorMessageForSeasonDaysInput');
+        if(days<14){
+            errorMessageForSeasonDaysInput.textContent = "Kesto on alle 14 päivää.";
+        }else{
+            // yli 366 päivää
+            errorMessageForSeasonDaysInput.textContent = "Kesto on yli 366 päivää.";
+        }
     }
 
     let priceElement1 = document.querySelector('#seasonCost1');
