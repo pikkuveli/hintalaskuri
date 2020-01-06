@@ -64,12 +64,16 @@
     </div>
 
     <div id="view2" class="container">
-        <h2>Kausilippulaskuri (aikuinen, AB-vyöhyke)</h2>
+        <h2>Kausilippulaskuri</h2>
 
         <p>
             Syötä kausilipun kesto: 
             <input id="seasonDaysInput" type="number" min="14" max="366" step="1"> 
-            vrk, vyöhyke: 
+            vrk
+        </p>
+
+        <p>
+            Vyöhyke:
             <select id="zoneSelection">
                 <option value="ab">AB</option>
                 <option value="abc">ABC</option>
@@ -79,7 +83,10 @@
                 <option value="cd">CD</option>
                 <option value="d">D</option>
             </select>
-            ja asiakasryhmä:
+        </p>
+
+        <p>
+            Asiakasryhmä:
             <select id="customerGroupSelection">
                 <option value="adult">Aikuinen</option>
                 <option value="child">Lapsi 7–17 v.</option>
