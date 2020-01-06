@@ -213,4 +213,17 @@ function calculateSeasonStorePrices(price, customerGroup) {
 
 $(document).ready(function () {
     $('[data-toggle="popover"]').popover({ html: true });
+    $(".nav-tabs a").click(function () {
+        $(this).tab('show');
+    });
+    // $("#home a").click(function () {
+    //     $(this).tab('show');
+    //     $('li nav-item').removeClass('active');
+    // });
+    $("#linkToCalc1").click(function (event) {
+        $('.tab2').tab('show');
+    });
+    $("#linkToCalc2").click(function (event) {
+        $('.tab3').tab('show');
+    });
 });
