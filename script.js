@@ -82,7 +82,27 @@ function calculateSeasonPrice() {
     let price1 = 0;
     let prices = [0, 0, 0];
 
-    let days = 0;
+    // AB = BC = D:
+    let adultAB = [40.4, 59.7, 112.2, 164.7, 637.2];
+    let discountAB = [20.2, 29.9, 56.0, 82.1, 317.0];
+    let studentAB = [22.3, 32.8, 61.6, 90.4, 349.6];
+
+    // ABC = BCD:
+    let adultABC = [65.7, 96.7, 181.6, 266.5, 1030.6];
+    let discountABC = [33.1, 48.4, 91.0, 133.6, 517.0];
+    let studentABC = [36.0, 53.2, 100.0, 146.8, 568.0];
+
+    // CD:
+    let adultCD = [52.7, 77.6, 145.7, 213.8, 826.7];
+    let discountCD = [26.4, 38.8, 72.7, 106.6, 411.7];
+    let studentCD = [29.0, 42.7, 80.2, 117.7, 455.2];
+
+    // ABCD:
+    let adultABCD = [94.6, 139.7, 262.4, 385.1, 1489.4];
+    let discountABCD = [47.4, 69.9, 131.1, 192.3, 743.1];
+    let studentABCD = [52.0, 76.8, 144.3, 211.8, 819.3];
+
+    //let days = 0;
 
     let selectedSeasonDays = "";
 
