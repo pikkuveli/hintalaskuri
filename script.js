@@ -154,12 +154,22 @@ function calculateSeasonPrice() {
 }
 
 function calculateSeasonStorePrices(price, customerGroup) {
+    
+    let rKioskiPrice = price * 0.035;
+
+    // R-kioski: percent 3,5%, max. 5 euros
+    if (rKioskiPrice > 5.00) {
+        rKioskiPrice = price + 5.00;
+    } else {
+        rKioskiPrice = price * 1.035;
+    }
+
     // student or discount group: different price in K-ryhmä (1 euro)
     if (customerGroup == 1 || customerGroup == 2) { 
-        return [price + 1, price + 1, price * 1.035];
+        return [price + 1, price + 1, rKioskiPrice];
     }
     // adult: different price in K-ryhmä (2 euros)
-    return [price + 1, price + 2, price * 1.035];
+    return [price + 1, price + 2, rKioskiPrice];
 }
 
 $(document).ready(function () {
